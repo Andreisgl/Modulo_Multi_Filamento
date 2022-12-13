@@ -20,18 +20,22 @@ void Stepper::init_stepper(int dir, int step, int stepsPU)
 
 void Stepper::move_stepper(float dist_unit, float vel_UpS, int dir)
 {
+  //dist = 2, vel = 1;
+
   //time = vel/dist
-  float time_mS = (dist_unit / vel_UpS) * 1000;
-  
-    int amnt_steps = stepsPerUnit*dist_unit;
-    int time_perStep = time_mS/amnt_steps;
-    for(int i=amnt_steps; i>0; i--)
-    {
-      step_stepper(dir);
-      delayMicroseconds(int(time_perStep)*1000);
-    }    
-        
-  
+  int total_steps = dist_unit * stepsPerUnit; //400
+  int steps_psec = vel_UpS * stepsPerUnit; // 200
+  int time  = total_steps/steps_psec; // 2
+  //int steps_psec = total_steps/time;
+  double sec_pstep = float(time)/total_steps; // 0,005
+  int intsec_pstep = (sec_pstep * 1000.0);
+
+  for(int i=total_steps; i>0; i--)
+  {
+    step_stepper(dir);
+    delay(intsec_pstep);
+    //delay(5);
+  }
 }
 
 void Stepper::step_stepper(int dir)
