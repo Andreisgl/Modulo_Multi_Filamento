@@ -35,7 +35,11 @@ String AParser::acode_parse_command(String input, int pos)
   return output[pos];
 }
 
-bool AParser::A1() //Move axis
+bool AParser::A1(String parameters) //Move axis
 {
-  return true;
+  if(parameters == "EEE III OOO")
+  {return true;}
+  else
+    {return false;}
+  
 }

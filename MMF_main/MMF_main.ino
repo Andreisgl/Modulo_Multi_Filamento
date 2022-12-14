@@ -61,7 +61,7 @@ void loop()
       {
         case 'A': // A-code "A" is for movement
         Serial.println("\t!");
-          if( AParser.A1() == true);
+          if( AParser.A1(parameters) == true);
           {
             Serial.println("wololo");
           }
