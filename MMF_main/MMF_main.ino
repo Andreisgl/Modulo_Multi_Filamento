@@ -19,17 +19,29 @@ void loop()
   if(Serial.available())
   {
     String incoming = Serial.readString();
-    
+    String data = incoming;
     //incoming = strtok(incoming, ":");
 
-    char sample;
-    for(int i=0; i< sizeof(m_command); i++)
+    if(data[0] == m_command[0])
     {
-      sample += incoming[i];
-    }
-    Serial.println(sample);
-    if(sample == m_command)
-    {
+      
+      data.remove(data.indexOf((incoming[3]))+1);
+      if(data == m_command) // If master command is recognized...
+      {
+        Serial.println("Master command = true!");
+        
+
+        data = incoming; // Parse data that comes after it.
+        data.remove(0, data.indexOf((incoming[3])) + 1);
+        Serial.println(data);
+      }
+      else // Or else...
+      {
+        //Send data to other serial port. TODO!!!!!!!!
+      }
+        
+      
+      
       
     }
   }
