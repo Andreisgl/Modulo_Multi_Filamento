@@ -8,6 +8,7 @@ class Stepper
     void init_stepper(int dir, int step, int stepsPU);
     void move_stepper(float dist_unit, float vel_UpS, int dir);
     void step_stepper(int dir);
+    void set_steps_unit(int spu);
   private:
     int dirPin;
     int stepPin;

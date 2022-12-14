@@ -1,9 +1,6 @@
 #include "Arduino.h"
 #include "Stepper.h"
 
-
-
-
 int dirPin;
 int stepPin;
 int stepsPerUnit; // Steps per unit
@@ -50,4 +47,9 @@ void Stepper::step_stepper(int dir)
   }
   digitalWrite(stepPin, HIGH);
   digitalWrite(stepPin, LOW);
+}
+
+void Stepper::set_steps_unit(int spu)
+{
+  stepsPerUnit = spu;
 }
