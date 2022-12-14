@@ -24,24 +24,26 @@ void loop()
     {
       data = incoming;
       //Send to other serial port (printer). TODO
+      Serial.println("Command for printer!")
     }
     else // If it does have a master command
     {
       //Keep parsing command.
       String command = acode_parse_command(data, 0); // Parse first command.
       String aux = command;
-      char aux2[20];
-      aux.toCharArray(aux2, 20);
-      Serial.print("Full command: ");
-      Serial.println( command ); //Get command
-      aux.remove(0);
-      switch (int(aux2))
+      Serial.print("Code Command: ");
+      Serial.print( command ); //Get command
+
+      Serial.print("\tFirst letter: ");
+      Serial.print( command[0] ); //Get command
+
+      switch (command[0])
       {
-        case int('A'):
-          Serial.println("Parsed command: ");
-          Serial.print(aux2);
+        case 'A': // A-code "A" is for movement
+        Serial.println("\t!");
           break;
       }
+      
     }
   }
 
