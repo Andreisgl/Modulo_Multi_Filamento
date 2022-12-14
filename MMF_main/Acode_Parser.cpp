@@ -1,5 +1,6 @@
 #include "Arduino.h"
 #include "Acode_Parser.h"
+#include "Stepper.h"
 
 char m_command[] = "MMF:";
 
@@ -32,4 +33,9 @@ String AParser::acode_parse_command(String input, int pos)
 
   String output[] = {aux1, aux2};
   return output[pos];
+}
+
+bool AParser::A1() //Move axis
+{
+  return true;
 }
