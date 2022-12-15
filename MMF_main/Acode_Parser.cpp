@@ -39,10 +39,17 @@ String AParser::acode_parse_command(String input, int pos)
   return output[pos];
 }
 
-bool AParser::A1(String parameters) //Home axis
+bool AParser::A1() //Home/Load filament 1
 {
     //motorA.init_stepper(2, 3, 200);
-    motorA.init_stepper(2, 3, 10);
+    motorA.init_stepper(2, 3, 160);
     motorA.move_stepper(1,1,1);
+    return true;  
+}
+bool AParser::A2() //Load filament 2
+{
+    //motorA.init_stepper(2, 3, 200);
+    motorA.init_stepper(2, 3, 160);
+    motorA.move_stepper(1,1,0);
     return true;  
 }

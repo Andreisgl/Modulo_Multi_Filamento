@@ -9,7 +9,8 @@ class AParser
     String serial_check_master_command(String incoming);
     String acode_parse_command(String input, int pos);
 
-    bool A1(String parameters);
+    bool A1();
+    bool A2();
   private:
   
 };

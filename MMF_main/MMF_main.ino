@@ -55,18 +55,31 @@ void loop()
       Serial.print("\tParameters: ");
       Serial.print( parameters ); //Get command
 
-      //Serial.println();
+      Serial.println();
 
-      switch (command[0])
+      /*
+      switch ( char_command )
       {
-        case 'A': // A-code "A" is for movement
+        case 'A1': // A-code "A" is for movement
         Serial.println("\t!");
-          if( AParser.A1(parameters) == true);
+          if( AParser.A1() == true);
           {
             Serial.println("wololo");
           }
           break;
       }
+      */
+      if(command == "A1")
+      {
+        Serial.println("A1");
+        AParser.A1();
+      }
+      else if(command == "A2")
+      {
+        Serial.println("A2");
+        AParser.A2();
+      }
+      
     }
 
 
