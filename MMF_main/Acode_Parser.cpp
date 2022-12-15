@@ -4,8 +4,12 @@
 
 char m_command[] = "MMF:";
 
+Stepper motorA;
 
-
+void AParser::parser_setup()
+{
+  motorA.init_stepper(2, 3, 1);
+}
 String AParser::serial_check_master_command(String incoming)
 {
   String data = incoming;
@@ -35,11 +39,10 @@ String AParser::acode_parse_command(String input, int pos)
   return output[pos];
 }
 
-bool AParser::A1(String parameters) //Move axis
+bool AParser::A1(String parameters) //Home axis
 {
-  if(parameters == "EEE III OOO")
-  {return true;}
-  else
-    {return false;}
-  
+    //motorA.init_stepper(2, 3, 200);
+    motorA.init_stepper(2, 3, 10);
+    motorA.move_stepper(1,1,1);
+    return true;  
 }

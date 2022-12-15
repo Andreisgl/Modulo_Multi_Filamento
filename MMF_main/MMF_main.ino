@@ -9,7 +9,7 @@ Stepper motor1;
 void setup()
 {
   Serial.begin(9600);
-
+  AParser.parser_setup();
   // Define pin connections & motor's steps per revolution
   motor1.init_stepper(2, 3, 200);
 }
