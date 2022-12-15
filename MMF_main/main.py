@@ -1,6 +1,12 @@
-from machine import Pin
-from time import sleep
-led = Pin(2, Pin.OUT)
+import pycom
+import time
+
+pycom.heartbeat(False)
+
 while True:
-    led.value(not led.value())
-    sleep(0.5)
+    pycom.rgbled(0xFF0000)  # Red
+    time.sleep(1)
+    pycom.rgbled(0x00FF00)  # Green
+    time.sleep(1)
+    pycom.rgbled(0x0000FF)  # Blue
+    time.sleep(1)
