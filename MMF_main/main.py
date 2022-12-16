@@ -46,10 +46,29 @@ motorA = Motor(3, 2, 1)
    
         
         
+from machine import UART, Pin
+uart1 = UART(1, baudrate=9600, tx=Pin(4), rx=Pin(5))
+#uart1.write('hello\n')  # write 5 bytes
 
+master_command = "MMF:"
 
+#while True:
+#    uart1.write('hello\n')
 
-
-motorA.move_motor(25, 25, 0)
+while True:
+    incoming = uart1.read()
+    incoming = str(incoming)
+    if incoming != 'None': #Only continue if something was received
+        incoming = incoming[2:-1] #Strip byte stuff
+        if incoming[:len(master_command)] == master_command: #See if master command is present
+            print( incoming )
+            uart1.write(str(incoming))
+            uart1.write('\n')
+            
+            
+        else: #If no master command is present, pass command to printer:
+            pass #TODO: Implement pass to printer
+    time.sleep(0.1)
+#motorA.move_motor(25, 25, 0)
 
 
