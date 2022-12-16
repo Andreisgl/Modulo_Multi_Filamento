@@ -50,7 +50,7 @@ class Motor:
 
 
 
-motorA = Motor(3, 2, 200)
-motorA.move_motor(1, 0.5, 0)
+motorA = Motor(3, 2, 1)
+motorA.move_motor(25, 25, 0)
 
 
