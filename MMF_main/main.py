@@ -39,13 +39,17 @@ class Motor:
         for i in range(total_steps):
             self.step_stepper(direction)
             time.sleep(sec_pstep)
+            
+motorA = Motor(3, 2, 1)
+
+
    
         
         
 
 
 
-motorA = Motor(3, 2, 1)
+
 motorA.move_motor(25, 25, 0)
 
 
