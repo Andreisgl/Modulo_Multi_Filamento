@@ -39,8 +39,22 @@ class Motor:
         for i in range(total_steps):
             self.step_stepper(direction)
             time.sleep(sec_pstep)
-            
-motorA = Motor(3, 2, 1)
+
+
+def command_parser(inc):
+    return inc.split()
+
+def mmf_switch(args):
+    print(args)
+    
+def mmf_move(args):
+    args.pop(0)
+    print(args)
+    if args[0] == "A":
+            motorA.move_motor(int(args[1]), 1, 0)
+
+
+motorA = Motor(3, 2, 93) #Motor for filament A
 
 
    
@@ -61,14 +75,31 @@ while True:
     if incoming != 'None': #Only continue if something was received
         incoming = incoming[2:-1] #Strip byte stuff
         if incoming[:len(master_command)] == master_command: #See if master command is present
-            print( incoming )
-            uart1.write(str(incoming))
-            uart1.write('\n')
+            incoming = incoming[len(master_command):]
             
+            
+            
+            incoming = command_parser(incoming)
+            print( incoming )
+            #uart1.write(str(incoming))
+            
+            # The commands to be executed
+            command = incoming[0]
+            if command == "SWITCH":
+                mmf_switch(incoming)
+            elif command == "MOVE":
+                mmf_move(incoming)
             
         else: #If no master command is present, pass command to printer:
             pass #TODO: Implement pass to printer
+    uart1.write('\n')
     time.sleep(0.1)
-#motorA.move_motor(25, 25, 0)
+    
+    
 
+
+    
+
+
+#motorA.move_motor(25, 25, 0)
 
