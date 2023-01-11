@@ -1,7 +1,7 @@
 import utime
 import time
+import Stepper
 
-import
 
 
 def command_parser(inc):
@@ -18,7 +18,7 @@ def mmf_move(args):
 
 
 from machine import Pin, PWM
-motorA = Motor(3, 2, 93) #Motor for filament A
+motorA = Stepper.Motor(3, 2, 93) #Motor for filament A
 selector_AB = PWM(Pin(6))
 selector_AB.freq(50)
 selector_AB.duty_u16(0)

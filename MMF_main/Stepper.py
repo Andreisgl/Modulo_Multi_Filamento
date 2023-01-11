@@ -1,3 +1,7 @@
+import utime
+import time
+import machine
+
 class Motor:
     dir_pin = ""
     step_pin = ""
