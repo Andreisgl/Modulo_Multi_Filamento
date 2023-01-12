@@ -17,11 +17,15 @@ def mmf_move(args):
             motorA.move_motor(int(args[1]), 1, 0)
 
 
-from machine import Pin, PWM
+
 motorA = Stepper.Motor(3, 2, 93) #Motor for filament A
+
+from machine import Pin, PWM
 selector_AB = PWM(Pin(6))
 selector_AB.freq(50)
-selector_AB.duty_u16(0)
+
+print("set servo")
+selector_AB.duty_u16(65535)
 
    
         
@@ -62,9 +66,7 @@ while False:
     uart1.write('\n')
     time.sleep(0.1)
 
-print("set servo")
-selector_AB.duty_u16(65535)
-    
+
 
 
     
