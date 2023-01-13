@@ -25,7 +25,7 @@ selector_AB = PWM(Pin(6))
 selector_AB.freq(50)
 
 print("set servo")
-selector_AB.duty_u16(65535)
+selector_AB.duty_u16(40000)
 
    
         
