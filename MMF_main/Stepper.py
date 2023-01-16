@@ -2,7 +2,7 @@ import utime
 import time
 import machine
 
-class Motor:
+class Stepper:
     dir_pin = ""
     step_pin = ""
     steps_unit = ""

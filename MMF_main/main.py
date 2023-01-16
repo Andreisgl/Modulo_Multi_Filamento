@@ -18,7 +18,7 @@ def mmf_move(args):
 
 
 
-motorA = Stepper.Motor(3, 2, 93) #Motor for filament A
+motorA = Stepper.Stepper(3, 2, 93) #Motor for filament A
 
 from machine import Pin, PWM
 selector_AB = PWM(Pin(6))
